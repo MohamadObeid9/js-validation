@@ -1,4 +1,4 @@
 import "./styles.css";
-// import { createPara } from "./ts/script";
-// createPara();
+import { launchPgr } from "./ts/script";
+launchPgr();
 console.log("hello world");
