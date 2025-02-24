@@ -3,18 +3,23 @@ export const validateEmail = () => {
   const errorMsg = document.querySelector("#errorEmail") as HTMLElement | null;
 
   if (email && errorMsg) {
-    email.addEventListener("input", () => {
+    const validate = () => {
       if (email.validity.valueMissing) {
         errorMsg.textContent = "You need to enter an email address.";
+        return false;
       } else if (email.validity.typeMismatch) {
         errorMsg.textContent = "Entered value needs to be an e-mail address.";
+        return false;
       } else if (email.validity.patternMismatch) {
         errorMsg.textContent = "I am expecting a valid email address!";
+        return false;
       } else {
         errorMsg.textContent = "";
         return true;
       }
-    });
-    return false;
+    };
+    email.addEventListener("input", validate);
+    return validate();
   }
+  return false;
 };
